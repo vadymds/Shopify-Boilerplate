@@ -1,0 +1,19 @@
+@spacer: 25px;
+
+hr {
+  width: 100%;
+  height: 1px;
+  background: @white;
+  border: none;
+  clear: both;
+  margin: @spacer 0;
+  &.thin {
+    background: @lighterGray;
+  }
+  &.compact {
+    margin: @spacer/2 0;
+  }
+  &.big {
+    margin: @spacer*2 0;
+  }
+}

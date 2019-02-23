@@ -1,0 +1,94 @@
+@root_font_size: 16;
+
+@min:     ~"screen and (min-width: 300px)";
+@mobile:  ~"screen and (min-width: 500px)";
+@tablet:  ~"screen and (min-width: 740px)";
+@desktop: ~"screen and (min-width: 980px)";
+@max:     ~"screen and (min-width: 1220px)";
+
+.font_size(@px_size) {
+  @px: @px_size;
+  @rem: (@px_size / @root_font_size);
+  font-size: ~"@{px}px";
+  font-size: ~"@{rem}rem";
+}
+
+.cover() {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.center() {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.transition(){
+  transition: 300ms ease;
+}
+
+.ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.covered{
+  .cover();
+}
+
+.float {
+
+  &-left {
+    float: left;
+  }
+  &-right {
+    float: right;
+  }
+
+}
+
+.text {
+  &-left {
+    text-align: left;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+}
+
+.pinned {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  z-index: 20;
+  &--bottom {
+    bottom: 0;
+  }
+  &--fixed {
+    position: fixed;
+  }
+  &--top {
+    top: 0;
+  }
+}
+
+.nomargin {
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}

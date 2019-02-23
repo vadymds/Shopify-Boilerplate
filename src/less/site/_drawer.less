@@ -1,0 +1,41 @@
+.drawer {
+
+  @media @tablet {
+    position: fixed;
+    width: 400px;  
+    right: 0;
+    top: 0;
+    background-color: @white;
+    height: 100vh;
+    z-index: 999;
+    box-shadow: 0 0 @spacer rgba(0,0,0,.05);
+    transform: translateX(100%);
+    transition: 400ms ease;
+  }
+  
+}
+
+.js-drawer-open {
+  & .drawer {
+    @media @tablet {
+      transform: translateX(0);
+    }
+    outline: none!important; 
+  }
+  body {
+    &:before {
+      content: '';
+      display: block;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      z-index: 99;
+      transition: 500ms ease;
+      pointer-events: none;
+      background-color: @black25;
+      transition-delay: 500;
+    }
+  }
+}

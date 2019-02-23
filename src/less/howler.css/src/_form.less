@@ -1,0 +1,85 @@
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+form {
+
+  & label {
+    display: block;
+    margin: 0 0 5px;
+    letter-spacing: .05rem;
+    color: @color-secondary;
+  }
+
+  select {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 29 14" width="29"><path fill="%23d1d1d1" d="M9.37727 3.625l5.08154 6.93523L19.54036 3.625"/></svg>') center right no-repeat;
+  }
+
+  & input[type=text],
+  & input[type=email],
+  & input[type=password],
+  & input[type=tel],
+  & input[type=url],
+  & select,
+  & textarea {
+
+    background-color: transparent;
+    border-radius: .2rem;
+    border: .1rem solid @color-quaternary;
+    box-shadow: none;
+    box-sizing: inherit;
+    color: inherit;
+    cursor: auto;
+    font-family: inherit;
+    margin-bottom: 10px;
+    min-width: 100%;
+    padding: .6rem 1.0rem;
+    text-align: left;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+
+    &:required {
+      //background-color: red;
+    }
+
+    &:focus {
+      border: .1rem solid @color-secondary;
+      outline: 0
+    }
+
+    &-clear {
+      background-color: transparent;
+    }
+
+  }
+
+  & textarea {
+    min-height: 6.5rem
+  }
+
+  & input[type='checkbox'],
+  & input[type='radio'] {
+    display: inline
+  }
+
+  & .label-inline {
+    display: inline-block;
+    font-weight: normal;
+    margin-left: .5rem;
+  }
+
+
+}

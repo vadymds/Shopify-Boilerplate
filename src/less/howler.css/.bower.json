@@ -1,0 +1,29 @@
+{
+  "name": "howler.css",
+  "description": "A minimal CSS framework.",
+  "homepage": "https://github.com/Howler-LA/Howler",
+  "repository": "howler/howler",
+  "license": "MIT",
+  "author": "Craig Fowler <craig@howler.la>",
+  "main": "dist/howler.css",
+  "keywords": [
+    "howler"
+  ],
+  "ignore": [
+    "config.codekit3",
+    ".DS_Store"
+  ],
+  "dependencies": {
+    "normalize.css": "~5.0.0",
+    "formstone": "~1.4.0"
+  },
+  "_release": "1d4ce8a97c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1d4ce8a97c38186fb24ec139703da927f175d3c8"
+  },
+  "_source": "https://github.com/Howler-LA/Howler.git",
+  "_target": "*",
+  "_originalSource": "howlercss"
+}

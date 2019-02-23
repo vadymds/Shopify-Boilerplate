@@ -1,0 +1,21 @@
+{
+  "name": "howler.css",
+  "version": "1",
+  "description": "A minimal CSS framework.",
+  "homepage": "https://github.com/Howler-LA/Howler",
+  "repository": "howler/howler",
+  "license": "MIT",
+  "author": "Craig Fowler <craig@howler.la>",
+  "main": "dist/howler.css",
+  "keywords": [
+    "howler"
+  ],
+  "ignore": [
+    "config.codekit3",
+    ".DS_Store"
+  ],
+  "dependencies": {
+    "normalize.css": "~5.0.0",
+    "formstone": "~1.4.0"
+  }
+}

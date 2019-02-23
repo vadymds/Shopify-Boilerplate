@@ -1,0 +1,173 @@
+<div id="slideshow-{{ section.id }}" class="slideshow carousel" data-carousel-options='{"single":false,"pagination":false}'>
+  {%- for block in section.blocks -%}
+  <div id="" class="slideshow-slide background" data-background-options='{"source":"{{ block.settings.image | img_url: 'x2400' }}"}' >
+    <div class="slideshow-slide__content">
+      <div class="fs-row">
+        <div class="fs-cell fs-lg-half">
+          <h1>{{ block.settings.title }}</h1>
+          {{ block.settings.desc }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {%- endfor -%}
+</div>
+
+<style>
+  #slideshow-{{ section.id }} .slideshow-slide {
+    height: {{ section.settings.slide_height }}vh;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "shopify-section--slideshow",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_fullscreen",
+      "label": "Show full-screen images",
+      "info": "If enabled, images will be resized to fit the entire screen.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrow",
+      "label": "Show bottom arrow",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Auto rotate between slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "cycle_speed",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "unit": "sec",
+      "label": "Change slides every",
+      "default": 5
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button text",
+      "default": "#363636"
+    },
+    {
+      "type": "range",
+      "id": "slide_height",
+      "label": "Slide Height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "default": 90
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1560 x 1050px jpg recommended"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image",
+          "info": "750 x 1100px jpg recommended. If none is set, desktop image will be cropped."
+        },
+        {
+          "type": "select",
+          "id": "content_position",
+          "label": "Desktop content position",
+          "options": [
+            {
+              "value": "middleLeft",
+              "label": "Middle left"
+            },
+            {
+              "value": "middleCenter",
+              "label": "Middle center"
+            },
+            {
+              "value": "middleRight",
+              "label": "Middle right"
+            },
+            {
+              "value": "bottomLeft",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottomCenter",
+              "label": "Bottom center"
+            },
+            {
+              "value": "bottomRight",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "bottomLeft"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Tell your story"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Description"
+        },
+        {
+          "type": "header",
+          "content": "Button 1"
+        },
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "button_1_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Image",
+      "name": "Slideshow",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

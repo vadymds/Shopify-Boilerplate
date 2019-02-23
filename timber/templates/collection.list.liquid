@@ -1,0 +1,46 @@
+{% paginate collection.products by 12 %}
+
+<div class="fs-row">
+  <div class="fs-cell">
+    {% include 'breadcrumb' %}
+  </div>
+</div>
+
+{% if collection.description != blank %}
+<header class="section-header">
+  <div class="fs-row">
+    <div class="fs-cell fs-lg-full">
+      <h1 class="section-header__title">{{ collection.title }}</h1>
+    </div>
+    <div class="fs-cell fs-lg-full rte rte--header">
+      {{ collection.description }}
+    </div>
+  </div>
+</header>
+<hr class="divider">
+<div class="section-header">
+  <div class="section-header__right">
+    {% include 'collection-sorting' %}
+  </div>
+</div>
+{% else %}
+<header class="section-header">
+  <div class="fs-row">
+    <div class="fs-cell fs-lg-half">
+      <h1 class="section-header__title section-header__left">{{ collection.title }}</h1>
+    </div>
+    <div class="fs-cell fs-lg-half text-right section-header__right">
+      {% include 'collection-sorting' %}
+    </div>
+  </div>
+</header>
+{% endif %}
+
+<div class="fs-row">
+  {% for product in collection.products %}
+  {% assign grid_item_width = 'fs-cell fs-all-full' %}
+  {% include 'product-list-item' %}
+  {% endfor %}
+</div>
+
+{% endpaginate %}

@@ -1,0 +1,28 @@
+dl, ol, ul {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+dl, ol, ul {
+  margin: 0;
+}
+
+ol {
+  //list-style: decimal inside
+}
+
+ul {
+  //list-style: circle inside
+}
+
+.inline-list {
+  & li {
+    display: inline-block;
+  }
+  &--centered {
+    & li {
+      margin: 0 6px;
+    }
+  }
+}
