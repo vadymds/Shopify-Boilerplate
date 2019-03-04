@@ -1,11 +1,22 @@
-<div id="slideshow-{{ section.id }}" class="slideshow carousel" data-carousel-options='{"single":false,"pagination":false}'>
+<div id="slideshow-{{ section.id }}" class="slideshow carousel" data-carousel-options='{"single":true,"pagination":false, "infinite": true, "controls":false}'>
   {%- for block in section.blocks -%}
-  <div id="" class="slideshow-slide background" data-background-options='{"source":"{{ block.settings.image | img_url: 'x2400' }}"}' >
-    <div class="slideshow-slide__content">
-      <div class="fs-row">
-        <div class="fs-cell fs-lg-half">
-          <h1>{{ block.settings.title }}</h1>
-          {{ block.settings.desc }}
+  <div id="slide-{{ block.id }}" class="slideshow-slide background"  data-background-options='{"source":{"0px":"{{ block.settings.mobile_image | img_url: 'x2400' }}","740px":"{{ block.settings.image | img_url: 'x2400' }}"},"alt":"Background Image"}'>
+    <div class="slideshow-slide__content {{ block.settings.content_position }}">
+      <div class="wrapper">
+        <div class="fs-row">
+          <div class="fs-cell fs-all-full">
+            <h1 class="u-h1 slideshow-slide__title">{{ block.settings.title }}</h1>
+            {% if block.settings.desc != blank %}
+            <p class="emphasized slideshow-slide__desc">{{ block.settings.desc }}</p>
+            {% endif %}
+            <div class="button button-group">
+              <a href="#" onclick='$(".slideshow").carousel("previous");' class="button button-square"><i data-feather="chevron-left"></i></a>
+              {% if block.settings.button_1_text != blank %}
+              <a href="{{ block.settings.button_1_link }}" class="button button-cta">{{ block.settings.button_1_text }}</a>
+              {% endif %}
+              <a href="#" onclick='$(".slideshow").carousel("next");' class="button button-square"><i data-feather="chevron-right"></i></a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -15,7 +26,10 @@
 
 <style>
   #slideshow-{{ section.id }} .slideshow-slide {
-    height: {{ section.settings.slide_height }}vh;
+    height: calc({{ section.settings.slide_height }}vh - 60px);
+  }
+  #slideshow-{{ section.id }} .slideshow-slide__content {
+    color: {{ section.settings.text_color }};
   }
 </style>
 
@@ -99,6 +113,18 @@
           "id": "content_position",
           "label": "Desktop content position",
           "options": [
+            {
+              "value": "topLeft",
+              "label": "Top left"
+            },
+            {
+              "value": "topCenter",
+              "label": "Top center"
+            },
+            {
+              "value": "topRight",
+              "label": "Top right"
+            },
             {
               "value": "middleLeft",
               "label": "Middle left"

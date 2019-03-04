@@ -1,52 +1,35 @@
-/* 
-   Swatches Styles
-*/
-
 {% assign width = '50px' %}
 {% assign height = '35px' %}
 .swatch { 
   margin:1em 0; 
 }
-/* Label */
 .swatch .header {
   margin: 0.5em 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-/* Hide radio buttons.*/
 .swatch input { 
   display:none!important;
 }
 .swatch label {
-  /* Rounded corners */
-  -webkit-border-radius:2px;
-  -moz-border-radius:2px;
-  border-radius:2px;
-  /* To give width and height */
   float:left;
-  /* Color swatches contain no text so they need to have a width. */
-  min-width:{{ width }} !important; 
-  height:{{ height }} !important;
-  /* No extra spacing between them */
   margin:0;
-  /* The border when the button is not selected */
-  border:#ccc 1px solid;
-  /* Background color */
-  background-color:#ddd;
-  /* Styling text */
-  font-size:13px;
-  text-align:center;
-  line-height:{{ height }};
   white-space:nowrap;
   text-transform:uppercase;
+  color: #ccc;
+  font-size: 1.6rem;
+  margin-right: 5px;
 }
-.swatch-element label { padding:0 10px; }
-.color.swatch-element label { padding:0; }
-/* Styling selected swatch */
-/* Slightly raised */
+.swatch-element label { 
+
+}
+.color.swatch-element label { 
+  padding:0; 
+}
 .swatch input:checked + label {
-  -webkit-box-shadow:0px 1px 2px rgba(0,0,0,0.8);
-  -moz-box-shadow:0px 1px 2px rgba(0,0,0,0.8);
-  box-shadow:0px 1px 2px rgba(0,0,0,0.8);
   border-color:transparent;
+  color: #000;
+  border-bottom: 1px solid #000;
 } 
 .swatch .swatch-element {
   float:left;
@@ -58,14 +41,14 @@
   position:relative;
 }
 /* Image with the cross in it */
-.crossed-out { position:absolute; width:100%; height:100%; left:0; top:0; }
+.crossed-out {
+  display: none!important;
+}
 .swatch .swatch-element .crossed-out { display:none; }
 .swatch .swatch-element.soldout .crossed-out { display:block; }
 .swatch .swatch-element.soldout label {
-  filter: alpha(opacity=60); /* internet explorer */
-  -khtml-opacity: 0.6;      /* khtml, old safari */
-  -moz-opacity: 0.6;       /* mozilla, netscape */
-  opacity: 0.6;           /* fx, safari, opera */
+  text-decoration: line-through;
+  pointer-events: none;
 }
 /* Tooltips */
 .swatch .tooltip {

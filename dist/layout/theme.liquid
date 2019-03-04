@@ -37,14 +37,13 @@
 
 </head>
 
-<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+<body id="{{ page_title | handle }}" class="fs-grid {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
   
-  {% section 'nav-section' %}
-  {% section 'drawer-section' %}
+  {% section 'drawer' %}
 
   <div id="PageContainer" class="is-moved-by-drawer">
-    {% section 'header-section' %}
-    <main class="wrapper main-content fs-grid" role="main">
+    {% section 'header' %}
+    <main class="main-content" role="main">
       {{ content_for_layout }}
     </main>
     {% section 'footer' %}

@@ -1,0 +1,105 @@
+.slideshow  {
+
+  & &-slide {
+
+    &.fs-carousel-visible {
+      & .slideshow-slide__content {
+        opacity: 1;
+        margin: 0;
+      }
+    }
+
+    &__content {
+      position: absolute;
+      z-index: 50;
+      width: 100%;
+      padding: @header 0;
+      text-align: center;
+      opacity: 0;
+      margin-top: 10px;
+      transition: opacity 1000ms ease, margin-top 1000ms ease;
+      transition-delay: 400ms;
+
+      &.middleLeft {
+        @media @tablet {
+          top: 50%;
+          transform: translateY(-50%);
+          text-align: left;
+        }
+      }
+      &.middleCenter {
+        @media @tablet {
+          top: 50%;
+          transform: translateY(-50%);
+          text-align: center;
+        }
+      }
+      &.middleRight {
+        @media @tablet {
+          top: 50%;
+          transform: translateY(-50%);
+          text-align: right;
+        }
+      }
+      &.bottomLeft {
+        @media @tablet {
+          bottom: 0;
+          text-align: left;
+        }
+      }
+      &.bottomCenter {
+        @media @tablet {
+          bottom: 0;
+          text-align: center;
+        }
+      }
+      &.bottomRight {
+        @media @tablet {
+          bottom: 0;
+          text-align: right;
+        }
+      }
+      &.topLeft {
+        @media @tablet {
+          top: 0;
+          text-align: left;
+        }
+      }
+      &.topCenter {
+        @media @tablet {
+          top: 0;
+          text-align: center;
+        }
+      }
+      &.topRight {
+        @media @tablet {
+          top: 0;
+          text-align: right;
+        }
+      }
+    }
+
+    &__title {
+      margin-bottom: 10px;
+    }
+    &__desc {
+      margin-bottom: 20px;
+    }
+
+  }
+
+}
+
+.slideshow .fs-carousel-item {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0s linear, visibility 0s linear;
+  transition-delay: 0.25s;
+}
+
+.slideshow .fs-carousel-item.fs-carousel-visible {
+  opacity: 1;
+  visibility: visible;
+  transition-duration: 0.25s;
+  transition-delay: 0s;
+}
