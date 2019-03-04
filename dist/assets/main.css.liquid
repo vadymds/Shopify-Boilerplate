@@ -5064,15 +5064,14 @@ html {
   font-size: 62.5%;
 }
 body {
-  color: #606c76;
+  color: #666666;
   background-color: #F9F9F9;
   font-size: 1.4em;
   line-height: 1.6;
-  letter-spacing: 0.025rem;
 }
 body a {
   text-decoration: none;
-  color: #111;
+  color: #666666;
 }
 body p a {
   text-decoration: underline;
@@ -5080,6 +5079,10 @@ body p a {
 }
 input:focus {
   outline: none!important;
+}
+.wrapper {
+  max-width: 1600px;
+  margin: auto;
 }
 @media screen and (min-width: 740px) {
   .wrapper {
@@ -5196,9 +5199,13 @@ ul {
 }
 .inline-list li {
   display: inline-block;
-}
-.inline-list--centered li {
   margin: 0 6px;
+}
+.inline-list li:first-child {
+  margin-left: 0;
+}
+.inline-list li:last-child {
+  margin-right: 0;
 }
 table {
   border-spacing: 0;
@@ -5279,9 +5286,10 @@ input[type='submit'] {
   color: #fff;
   cursor: pointer;
   display: inline-block;
+  font-weight: 600;
   font-family: inherit;
   height: 3.8rem;
-  letter-spacing: 0.025rem;
+  letter-spacing: 1px;
   line-height: 3.8rem;
   padding: 0 2.5rem;
   text-align: center;
@@ -5577,7 +5585,7 @@ hr.big {
   box-shadow: 0 0 0 1px #f2f2f2;
   background-color: #fff;
   font-size: 1.3rem;
-  color: #606c76;
+  color: #666666;
   letter-spacing: 0.025rem;
   font-family: inherit;
   -webkit-transition: 300ms ease;
@@ -5838,7 +5846,7 @@ hr.big {
   z-index: 99;
 }
 .drawer__title {
-  color: #606c76;
+  color: #666666;
 }
 .drawer__close {
   display: inline-block;

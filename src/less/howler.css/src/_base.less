@@ -7,12 +7,11 @@ body {
   background-color: @bgGray;
   font-size: 1.4em;
   line-height: 1.6;
-  letter-spacing: .025rem;
 }
 
 body a {
   text-decoration: none;
-  color: @black;
+  color: @textGray;
 }
 
 body p a {
@@ -25,6 +24,8 @@ input:focus {
 }
 
 .wrapper {
+  max-width: 1600px;
+  margin: auto;
   @media @tablet {
     padding: 0 @spacer;
   }
