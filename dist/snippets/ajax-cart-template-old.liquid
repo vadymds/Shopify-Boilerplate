@@ -13,13 +13,11 @@
         {{#items}}
         <div class="ajaxcart__product">
           <div class="ajaxcart__row" data-line="{{line}}">
-            <div class="fs-row">
-
-              <div class="fs-cell fs-all-fourth fs-sm-1">
+            <div class="grid">
+              <div class="grid__item one-quarter">
                 <a href="{{url}}" class="ajaxcart__product-image"><img src="{{img}}" alt=""></a>
               </div>
-
-              <div class="fs-cell fs-lg-8 fs-md-4 fs-sm-2">
+              <div class="grid__item three-quarters">
                 <p>
                   <a href="{{url}}" class="ajaxcart__product-name">{{name}}</a>
                   {{#if variation}}
@@ -37,8 +35,8 @@
                   {% endraw %}{% endif %}{% raw %}
                 </p>
 
-                <div class="fs-row">
-                  <div class="fs-cell fs-all-half fs-all-align-center">
+                <div class="grid--full display-table">
+                  <div class="grid__item display-table-cell one-half">
                     <div class="ajaxcart__qty">
                       <button type="button" class="ajaxcart__qty-adjust ajaxcart__qty--minus icon-fallback-text" data-id="{{key}}" data-qty="{{itemMinus}}" data-line="{{line}}">
                         <span class="icon icon-minus" aria-hidden="true"></span>
@@ -53,7 +51,7 @@
                       </button>
                     </div>
                   </div>
-                  <div class="fs-cell fs-all-half text-right fs-all-align-center">
+                  <div class="grid__item display-table-cell one-half text-right">
                     {{#if discountsApplied}}
                       <small class="ajaxcart-item__price-strikethrough"><s>{{{originalLinePrice}}}</s></small>
                       <br><span>{{{linePrice}}}</span>
@@ -63,7 +61,7 @@
                   </div>
                   {{#if discountsApplied}}
                     <div class="grid--full display-table">
-                      <div class="fs-cell text-right">
+                      <div class="grid__item text-right">
                         {{#each discounts}}
                           <small class="ajaxcart-item__discount">{{ this.title }}</small><br>
                         {{/each}}
@@ -71,7 +69,6 @@
                     </div>
                   {{/if}}
                 </div>
-
               </div>
             </div>
           </div>
@@ -79,42 +76,31 @@
         {{/items}}
 
         {% endraw %}{% if settings.cart_notes_enable %}{% raw %}
-          <div class="fs-row">
-            <div class="fs-cell">
-              <label for="CartSpecialInstructions">{% endraw %}{{ 'cart.general.note' | t }}{% raw %}</label>
-              <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ note }}</textarea>
-            </div>
+          <div>
+            <label for="CartSpecialInstructions">{% endraw %}{{ 'cart.general.note' | t }}{% raw %}</label>
+            <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ note }}</textarea>
           </div>
         {% endraw %}{% endif %}{% raw %}
       </div>
       <div class="ajaxcart__footer">
-
-        <div class="fs-row">
-          <div class="fs-cell fs-lg-8 fs-md-4 fs-sm-2">
-            {% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}
+        <div class="grid--full">
+          <div class="grid__item two-thirds">
+            <p>{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</p>
           </div>
-          <div class="fs-cell fs-lg-4 fs-md-2 fs-sm-1 text-right">
-            {{{totalPrice}}}
+          <div class="grid__item one-third text-right">
+            <p>{{{totalPrice}}}</p>
           </div>
           {{#if totalCartDiscount}}
-          <div class="fs-cell">
-            <div class="ajaxcart__savings text-center"><em>{{{totalCartDiscount}}}</em></div>
-          </div>
+            <p class="ajaxcart__savings text-center"><em>{{{totalCartDiscount}}}</em></p>
           {{/if}}
         </div>
-
-        <div class="fs-row">
-          <div class="fs-cell">
-            <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
-            <button type="submit" class="button button-secondary button-full cart__checkout" name="checkout">
-              {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %} &rarr;
-            </button>
-            {% endraw %}{% if additional_checkout_buttons %}
-            <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
-            {% endif %}{% raw %}
-          </div>
-        </div>
-
+        <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
+        <button type="submit" class="btn--secondary btn--full cart__checkout" name="checkout">
+          {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %} &rarr;
+        </button>
+        {% endraw %}{% if additional_checkout_buttons %}
+          <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
+        {% endif %}{% raw %}
       </div>
     </form>
   {% endraw %}

@@ -1,85 +1,36 @@
 {% capture logo %}
-  {% if template == 'index' %}
-  <h1 class="site-header__logo large--left" itemscope itemtype="http://schema.org/Organization">
-  {% else %}
-  <div class="h1 site-header__logo large--left" itemscope itemtype="http://schema.org/Organization">
-  {% endif %}
-  {% if settings.logo_use_image %}
-    <a href="/" itemprop="url" class="site-header__logo-link">
-      <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" itemprop="logo">
-    </a>
-  {% else %}
-    <a href="/" itemprop="url">{{ shop.name }}</a>
-  {% endif %}
-  {% if template == 'index' %}
-  </h1>
-  {% else %}
-  </div>
-  {% endif %}
-{% endcapture %}
-
-{% capture cart %}
-<a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
-  <span class="icon icon-cart" aria-hidden="true"></span>
-  {{ 'layout.cart.title' | t }}
-  (<span id="CartCount">{{ cart.item_count }}</span>
-  {{ 'layout.cart.items_count' | t: count: cart.item_count }}
-  <span id="CartCost">{{ cart.total_price | money }}</span>)
-</a>
-{% endcapture %}
-
-{% capture account %}
-  {% if customer %}
-  {% if customer.first_name != blank %}
-  {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-  {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
-  {% else %}
-  <a href="/account">{{ 'layout.customer.account' | t }}</a>
-  {% endif %}
-  | {{ 'layout.customer.log_out' | t | customer_logout_link }}
-  {% else %}
-  {{ 'layout.customer.log_in' | t | customer_login_link }}
-  | {{ 'layout.customer.create_account' | t | customer_register_link }}
-  {% endif %}
-{% endcapture %}
-
-{% capture search %}
-  {% include 'search-bar' %}
+<h1 class="header-logo"><a href="/">{{ shop.name }}</a></h1>
 {% endcapture %}
 
 {% capture menu %}
-  <ul class="site-nav" id="AccessibleNav">
+<ul class="inline-list">
   {% for link in linklists.main-menu.links %}
-  {% assign child_list_handle = link.title | handleize %}
-  {% if linklists[child_list_handle].links != blank %}
-    <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
-      <a href="{{ link.url }}" class="site-nav__link">
-        {{ link.title }}
-        <span class="icon icon-arrow-down" aria-hidden="true"></span>
-      </a>
-      <ul class="site-nav__dropdown">
-        {% for childlink in linklists[child_list_handle].links %}
-          <li{% if childlink.active %} class="site-nav--active"{% endif %}>
-            <a href="{{ childlink.url }}" class="site-nav__link">{{ childlink.title | escape }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    </li>
-  {% else %}
-    <li {% if link.active %}class="site-nav--active"{% endif %}>
-      <a href="{{ link.url }}" class="site-nav__link">{{ link.title }}</a>
-    </li>
-  {% endif %}
+  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
   {% endfor %}
-  </ul>
+</ul>
 {% endcapture %}
 
-<header class="fs-grid site-header {% if template == 'index' %}index{% endif %}">
+{% capture cart %}
+<ul class="inline-list">
+  <li><a href="/account" class="fs-sm-hide">Account</a></li>
+  <li>
+    <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
+      <span class="fs-sm-hide">Bag</span> (<span id="CartCount" class="site-header__cart-count">{{ cart.item_count }}</span>)
+    </a>
+  </li>
+</ul>
+{% endcapture %}
+
+{% if section.settings.sticky_header %}
+<header class="header sticky {% if template == 'index' %}header--index{% endif %}">
+{% else %}
+<header class="header {% if template == 'index' %}header--index{% endif %}">
+{% endif %}
   <div class="wrapper">
     <div class="fs-row">
       <div class="fs-cell fs-all-auto">{{ logo }}</div>
       <div class="fs-cell fs-all-auto text-center">{{ menu }}</div>
-      <div class="fs-cell fs-all-auto text-right">{{ cart }}&nbsp;{{ account }}</div>
+      <div class="fs-cell fs-all-auto text-right">{{ cart }}</div>
     </div>
   </div>
 </header>
@@ -87,6 +38,18 @@
 {% schema %}
   {
     "name": "Header",
-    "settings": []
+    "settings": [
+      {
+        "type":   "link_list",
+        "id":     "main_menu",
+        "label":  "Main Menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_header",
+        "label": "Sticky Header",
+        "default": false
+      }
+    ]
   }
 {% endschema %}

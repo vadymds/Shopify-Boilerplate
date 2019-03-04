@@ -1,78 +1,13 @@
-{% capture customer_form %}
-  {%- form 'customer', id: newsletter_id, class: 'Newsletter Form' -%}
-    {%- if form.posted_successfully? -%}
-    <p class="Form__Alert Alert Alert--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
-    {%- else -%}
-    {%- if form.errors -%}
-    <p class="Form__Alert Alert Alert--error">{{ form.errors.messages['email'] }}</p>
-    {%- endif -%}
-
-    <div class="Newsletter__Inner fs-row">
-      <input type="hidden" name="contact[tags]" value="newsletter">
-      <div class="fs-cell fs-lg-9 fs-md-4 fs-sm-2"><input type="email" name="contact[email]" class="Form__Input" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" required></div>
-      <div class="fs-cell fs-lg-3 fs-md-2 fs-sm-1"><button type="submit" class="Form__Submit">{{ 'general.newsletter_form.submit' | t }}</button></div>
-    </div>
-    {%- endif -%}
-  {%- endform -%}
-{% endcapture %}
-
-{% capture footer_menu %}
-  {%- assign linklist = linklists[section.settings.footer_menu] -%}
-  <ul class="inline-list">
-  {%- for link in linklist.links -%}
-    <li>
-      <a href="{{ link.url }}" class="Link Link--primary">{{ link.title | escape }}</a>
-    </li>
-  {% endfor %}
-  </ul>
-{% endcapture %}
-
-{% capture social_icons %}
-  <ul class="inline-list social-icons">
-    {% if settings.social_twitter_link != blank %}
-    <li>
-      <a class="icon-fallback-text" href="{{ settings.social_twitter_link }}" title="{{ shop.name }} on Twitter">
-        <span class="icon icon-twitter" aria-hidden="true"></span>
-        <span class="fallback-text">Twitter</span>
-      </a>
-    </li>
-    {% endif %}
-    {% if settings.social_facebook_link != blank %}
-    <li>
-      <a class="icon-fallback-text" href="{{ settings.social_facebook_link }}" title="{{ shop.name }} on Facebook">
-        <span class="icon icon-facebook" aria-hidden="true"></span>
-        <span class="fallback-text">Facebook</span>
-      </a>
-    </li>
-    {% endif %}
-  </ul>
-{% endcapture %}
-
-<footer class="site-footer small--text-center fs-grid" role="contentinfo">
+<footer class="footer text-center">
   <div class="wrapper">
     <div class="fs-row">
-
-      {% if settings.footer_social_enable %}
-      <div class="fs-cell fs-lg-third fs-md-half">
-        <h3>{{ 'layout.footer.social_title' | t }}</h3>
-        {{ social_icons }}
+      <div class="fs-cell fs-all-full">
+        <ul class="inline-list">
+          {% for link in linklists.footer.links %}
+          <li><a class="footer-link" href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endfor %}
+          <li>© {{ shop.name }} {{'now' | date: '%Y' }}</li>
       </div>
-      {% endif %}
-
-      {% if section.settings.footer_menu != blank %}
-      <div class="fs-cell fs-lg-third fs-md-half">
-        <h3>{{ 'layout.footer.footer_title' | t }}</h3>
-        {{ footer_menu }}
-      </div>
-      {% endif %}
-
-      {% if settings.footer_newsletter_enable %}
-      <div class="fs-cell fs-lg-third fs-md-half">
-        <h3>{{ 'layout.footer.newsletter_title' | t }}</h3>
-        {{ customer_form }}
-      </div>
-      {% endif %}
-
     </div>
   </div>
 </footer>

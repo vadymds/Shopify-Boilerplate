@@ -10,11 +10,9 @@
             <p class="emphasized slideshow-slide__desc">{{ block.settings.desc }}</p>
             {% endif %}
             <div class="button button-group">
-              <a href="#" onclick='$(".slideshow").carousel("previous");' class="button button-square"><i data-feather="chevron-left"></i></a>
               {% if block.settings.button_1_text != blank %}
               <a href="{{ block.settings.button_1_link }}" class="button button-cta">{{ block.settings.button_1_text }}</a>
               {% endif %}
-              <a href="#" onclick='$(".slideshow").carousel("next");' class="button button-square"><i data-feather="chevron-right"></i></a>
             </div>
           </div>
         </div>
@@ -26,7 +24,7 @@
 
 <style>
   #slideshow-{{ section.id }} .slideshow-slide {
-    height: calc({{ section.settings.slide_height }}vh - 60px);
+    height: calc({{ section.settings.slide_height }}vh);
   }
   #slideshow-{{ section.id }} .slideshow-slide__content {
     color: {{ section.settings.text_color }};
@@ -186,9 +184,6 @@
       "name": "Slideshow",
       "settings": {},
       "blocks": [
-        {
-          "type": "image"
-        },
         {
           "type": "image"
         }

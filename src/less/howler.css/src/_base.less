@@ -4,10 +4,36 @@ html {
 
 body {
   color: @textGray;
+  background-color: @bgGray;
   font-size: 1.4em;
   line-height: 1.6;
+  letter-spacing: .025rem;
+}
+
+body a {
+  text-decoration: none;
+  color: @black;
+}
+
+body p a {
+  text-decoration: underline;
+  color: @black;
 }
 
 input:focus { 
   outline: none!important; 
+}
+
+.wrapper {
+  @media @tablet {
+    padding: 0 @spacer;
+  }
+  @media @desktop {
+    padding: 0 @spacer*2;
+  }
+}
+
+.fs-row.flush {
+  margin: 0;
+  width: auto;
 }

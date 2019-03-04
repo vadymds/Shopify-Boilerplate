@@ -312,12 +312,12 @@
 		"oO": 0,
 		"oS": 1
 		},
-	"/dist/sections/drawer": {
+	"/dist/sections/drawer.liquid": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/dist/sections/drawer",
+		"oAP": "/dist/sections/drawer.liquid",
 		"oF": 0
 		},
 	"/dist/sections/footer.liquid": {
@@ -358,6 +358,14 @@
 		"hM": 0,
 		"oA": 0,
 		"oAP": "/dist/sections/slideshow.liquid",
+		"oF": 0
+		},
+	"/dist/snippets/ajax-cart-template-old.liquid": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/dist/snippets/ajax-cart-template-old.liquid",
 		"oF": 0
 		},
 	"/dist/snippets/ajax-cart-template.liquid": {

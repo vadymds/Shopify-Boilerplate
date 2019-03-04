@@ -1,41 +1,86 @@
+@height: 36px;
+
 .drawer {
 
+  @media @min {
+    width: 75%;
+  }
   @media @tablet {
-    position: fixed;
-    width: 400px;  
-    right: 0;
-    top: 0;
-    background-color: @white;
-    height: 100vh;
-    z-index: 999;
-    box-shadow: 0 0 @spacer rgba(0,0,0,.05);
-    transform: translateX(100%);
-    transition: 400ms ease;
+    width: 33%;
+  }
+  @media @desktop {
+    width: 33%;
+  }
+  @media @max {
+    width: 33%;
+  }
+  
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: @white;
+  height: 100vh;
+  z-index: 999;
+  transform: translateX(100%);
+  transition: 600ms ease;
+  
+  &__header {
+    z-index: 99;
+  }
+
+  &__title {
+    color: @textGray;
+  }
+
+  &__close {
+    display: inline-block;
+    text-align: center;
+    color: @black;
+
+    & button {
+      color: @black;
+      border: 0;
+      padding: 0;
+      position: relative;
+      top: -1px;
+      background-color: transparent;
+      -webkit-appearance: none;
+    }
+  }
+
+  & .ajaxcart {
+    &__row {
+      border-bottom: 1px solid @lighterGray;
+    }
+    &__product-name {
+      color: @black;
+      text-decoration: none;
+    }
+    &__footer {
+      //background-color: @white;
+      @media @tablet {
+        border-top: 1px solid @lighterGray;
+        //padding: @spacer*2 0;
+        //position: absolute;
+        //bottom: 0;
+        //width: 100%;
+      }
+    }
+    &__product-image {
+    }
+    &__qty-num {
+      margin-bottom: 0;
+      text-align: center;
+    }
   }
   
 }
 
 .js-drawer-open {
   & .drawer {
-    @media @tablet {
+    @media @min {
       transform: translateX(0);
     }
     outline: none!important; 
-  }
-  body {
-    &:before {
-      content: '';
-      display: block;
-      position: fixed;
-      height: 100%;
-      width: 100%;
-      left: 0;
-      top: 0;
-      z-index: 99;
-      transition: 500ms ease;
-      pointer-events: none;
-      background-color: @black25;
-      transition-delay: 500;
-    }
   }
 }
