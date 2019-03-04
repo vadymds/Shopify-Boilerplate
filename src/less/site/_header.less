@@ -1,0 +1,74 @@
+@header: 100px;
+
+.header {
+
+  z-index: 999;
+
+  @media @min {
+    padding: @header*.23 0;  
+    margin-bottom: 0;
+  }
+  @media @tablet {
+    padding: @header*.33 0;  
+    margin-bottom: @spacer;
+  }
+
+  & &-logo {
+    @media @desktop {
+      width: 265px;
+      margin: auto;
+    }
+  }
+
+  & .feather {
+    position: relative;
+    top: 3px;
+    &-x {
+      display: none;
+    }
+    &-menu {
+      top: 7px;
+      & line {
+        &:last-child {
+          display: none!important;
+        }
+      }
+    }
+  }
+
+  & .fs-swap-active {
+    & .feather {
+      &-menu {
+        display: none;
+      }
+      &-x {
+        display: inline;
+      }
+    }
+  }
+  
+
+}
+
+.header--fixed {
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  color: @white;
+
+  & a, & .feather {
+    color: inherit;
+  }
+
+}
+
+.header--dark {
+
+  color: @textGray;
+
+  & a, & .feather {
+    color: inherit;
+  }
+
+}

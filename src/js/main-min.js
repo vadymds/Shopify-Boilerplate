@@ -1,1 +1,0 @@
-function formstone(){$(".background").background(),$(".carousel").carousel(),$(".swap").swap(),$(".sticky").sticky(),$(".lightbox").lightbox()}function init(){formstone()}$(document).ready(function(){init()});
