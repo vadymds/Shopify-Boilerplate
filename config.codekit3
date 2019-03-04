@@ -328,12 +328,12 @@
 		"oAP": "/dist/sections/footer.liquid",
 		"oF": 0
 		},
-	"/dist/sections/header": {
+	"/dist/sections/header.liquid": {
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
 		"oA": 0,
-		"oAP": "/dist/sections/header",
+		"oAP": "/dist/sections/header.liquid",
 		"oF": 0
 		},
 	"/dist/sections/page-faq.liquid": {
