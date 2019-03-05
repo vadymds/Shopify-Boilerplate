@@ -15,7 +15,7 @@
   <li><a href="/account" class="fs-sm-hide">Account</a></li>
   <li>
     <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
-      <span class="fs-sm-hide">Bag</span> (<span id="CartCount" class="site-header__cart-count">{{ cart.item_count }}</span>)
+      <span class="fs-md-hide fs-sm-hide">Bag</span> (<span id="CartCount" class="site-header__cart-count">{{ cart.item_count }}</span>)
     </a>
   </li>
 </ul>
@@ -28,9 +28,9 @@
 {% endif %}
   <div class="wrapper">
     <div class="fs-row">
-      <div class="fs-cell fs-all-auto">{{ logo }}</div>
-      <div class="fs-cell fs-all-auto text-center">{{ menu }}</div>
-      <div class="fs-cell fs-all-auto text-right">{{ cart }}</div>
+      <div class="fs-cell fs-all-auto fs-md-1 fs-sm-fourth">{{ logo }}</div>
+      <div class="fs-cell fs-all-auto fs-md-4 fs-sm-half text-center">{{ menu }}</div>
+      <div class="fs-cell fs-all-auto fs-md-1 fs-sm-fourth text-right">{{ cart }}</div>
     </div>
   </div>
 </header>
